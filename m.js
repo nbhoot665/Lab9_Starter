@@ -18,24 +18,24 @@
         { id: 2, name: 'Cheetah', speed: 29.0 }
       ];
       
-      /* All console-API actions keyed to the EXACT button text */
+    
       const buttons = {
         'Console Log'            : () => console.log('Logging demo', Date.now()),
-        'Console Error'          : () => console.error('❌ Sample error message'),
+        'Console Error'          : () => console.error(' Sample error message'),
         'Console Count'          : () => console.count('Count button'),
-        'Console Warn'           : () => console.warn('⚠️  Sample warning'),
+        'Console Warn'           : () => console.warn('Sample warning'),
         'Console Clear'          : () => console.clear(),
         'Console Dir'            : () => console.dir(document.body),
         'Console Dirxml'         : () => console.dirxml(document.body),
-        'Console Group Start'    : () => console.group('Demo Group'),
+        'Console Group Start'    : () => console.group('Demo G'),
         'Console Group End'      : () => console.groupEnd(),
         'Console Table'          : () => console.table(animals),
         'Start Timer'            : () => console.time('timer-demo'),
         'End Timer'              : () => console.timeEnd('timer-demo'),
-        'Console Trace'          : () => first(),                 // call-stack demo
+        'Console Trace'          : () => first(),                
         'Try/Catch Demo'         : () => tryCatchDemo(),
         'Throw CustomError'      : () => throwCustom(),
-        'Trigger a Global Error' : () => notDefinedAnywhere()     // uncaught RefErr
+        'Trigger a Global Error' : () => notDefinedAnywhere()     
       };
       
 
@@ -53,11 +53,11 @@
         } catch (err) {
           console.warn('Caught in try/catch:', err.message);
         } finally {
-          console.log('finally always runs ✅');
+          console.log('finally runs');
         }
       }
       
-      /* Custom Error subclass + throw */
+  
       class ValidationError extends Error {
         constructor(msg) {
           super(msg);
@@ -74,9 +74,8 @@
       function validateUsername(name) {
         if (!name) throw new ValidationError('Username cannot be empty.');
       }
-      
-      /* Global error handler */
+
       window.addEventListener('error', evt => {
         console.log('🌐 Global handler caught:', evt.message);
-        // TrackJS (or similar) auto-reports this if its script is in <head>.
+        
       });
