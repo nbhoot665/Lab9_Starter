@@ -38,20 +38,17 @@
         'Trigger a Global Error' : () => notDefinedAnywhere()     // uncaught RefErr
       };
       
-      /* Small helpers for the trace demo */
+
       function first()  { second(); }
       function second() { console.trace('Stack trace'); }
-      
-      /* Attach each button to its action */
+
       errorBtns.forEach(btn => {
-        const fn = buttons[btn.textContent.trim()];
-        if (fn) btn.addEventListener('click', fn);
+        if (buttons[btn.textContent.trim()]) btn.addEventListener('click', buttons[btn.textContent.trim()]);
       });
       
-      /* try/catch/finally demo */
       function tryCatchDemo() {
         try {
-          const len = undefined.length;       // TypeError
+          const len = undefined.length;      
           console.log(len);
         } catch (err) {
           console.warn('Caught in try/catch:', err.message);
